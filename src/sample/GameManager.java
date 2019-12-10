@@ -29,6 +29,7 @@ public class GameManager {
     private Score scoreBoard;
     private boolean gameEnded;
     private int cookiesEaten;
+    private Color color;
 
     /**
      * Constructor
@@ -98,7 +99,7 @@ public class GameManager {
             root.getChildren().clear();
             this.cookieSet.clear();
             this.ghosts.clear();
-            this.drawBoard();
+            this.drawBoard(color);
             this.pacman.setCenterX(2.5 * BarObstacle.THICKNESS);
             this.pacman.setCenterY(2.5 * BarObstacle.THICKNESS);
             this.lifes = 3;
@@ -110,9 +111,15 @@ public class GameManager {
 
     /**
      * Draws the board of the game with the cookies and the Pacman
+     * @param color - color of the wall.
      */
-    public void drawBoard() {
-        this.maze.CreateMaze(root);
+    public void drawBoard(Color color) {
+    	if (color == null)
+    		this.color = Color.CADETBLUE;
+    	else
+    		this.color = color;
+        this.maze.CreateMaze(root, this.color);
+        
         // 1st line
         Integer skip[] = {5, 17};
         for (int i = 0; i < 23; i++) {

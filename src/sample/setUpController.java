@@ -36,6 +36,6 @@ public class setUpController {
 		
 		// get the color pikcker's value for the wall color.
 		Color value = choice.getValue();
-		System.out.println("color is" + value);
+		
 	}
 }

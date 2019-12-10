@@ -12,15 +12,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class startController {
-	@FXML
-	private Button start, setup;
+	@FXML private Button start, setup, back;
+	@FXML private ColorPicker choice;
 	
-	public void changeSecene(ActionEvent e) {
+	private static Color color;
+	
+	
+	public void changeSecene() {
 		
 		Stage theStage = new Stage();
 //		Stage theStage = (Stage) ((Button) e.getSource()).getScene().getWindow();
@@ -31,8 +36,9 @@ public class startController {
 	    Canvas canvas = new Canvas( 1225, 600 );
 	    root.getChildren().add( canvas );
 	    GameManager gameManager = new GameManager(root);
-
-	    gameManager.drawBoard();
+	    
+	    System.out.println("color to all drawBoard: " + color);
+	    gameManager.drawBoard(color);
 	         
 
 	    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
@@ -42,6 +48,9 @@ public class startController {
 	    theStage.show();
 	}
 	
+
+
+
 	public void goToSetup(ActionEvent event) throws IOException {
 		Parent setting = FXMLLoader.load(getClass().getResource("setup.fxml"));
 		Scene setupScene = new Scene(setting);
@@ -53,6 +62,19 @@ public class startController {
 		System.out.println("goToSetup");
 	}
 	
+	public void goBack(ActionEvent event) throws IOException {
+		Parent start = FXMLLoader.load(getClass().getResource("start.fxml"));
+		Scene startScene = new Scene(start);
+			
+		// this line gets the stage information
+		Stage startWindow = (Stage) ((Button) event.getSource()).getScene().getWindow();
+		startWindow.setScene(startScene);
+		startWindow.show();
+	}
 	
+	public void changeColor(ActionEvent event){
+		// get the color picker's value for the wall color.
+		color = choice.getValue();
+	}
 	
 }

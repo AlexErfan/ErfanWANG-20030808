@@ -8,14 +8,16 @@ import javafx.scene.shape.Rectangle;
 public class BarObstacle extends Rectangle {
 
     public static double THICKNESS = 25;
+   
     /**
      *
      * @param x
      * @param y
      * @param orientation - horizontal or vertical
      * @param length - the length of the bar (1 == 100px)
+     * @param color - the color of the wall
      */
-    public BarObstacle(double x, double y, String orientation, double length) {
+    public BarObstacle(double x, double y, String orientation, double length, Color color) {
         this.setX(x);
         this.setY(y);
         if (orientation.equals("horizontal")) {
@@ -25,7 +27,8 @@ public class BarObstacle extends Rectangle {
             this.setHeight(length * BarObstacle.THICKNESS);
             this.setWidth(BarObstacle.THICKNESS);
         }
-        this.setFill(Color.CADETBLUE);
+        this.setFill(color);
         this.setStrokeWidth(3);
     }
+    
 }
