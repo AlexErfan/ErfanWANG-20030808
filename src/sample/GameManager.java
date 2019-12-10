@@ -113,11 +113,11 @@ public class GameManager {
      * Draws the board of the game with the cookies and the Pacman
      * @param color - color of the wall.
      */
-    public void drawBoard(Color color) {
-    	if (color == null)
+    public void drawBoard(Color wColor) {
+    	if (wColor == null)
     		this.color = Color.CADETBLUE;
     	else
-    		this.color = color;
+    		this.color = wColor;
         this.maze.CreateMaze(root, this.color);
         
         // 1st line
