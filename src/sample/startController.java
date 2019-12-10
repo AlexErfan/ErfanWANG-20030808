@@ -16,13 +16,12 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class startController {
 	@FXML private Button start, setup, back;
-	@FXML private ColorPicker choice;
+	@FXML private ColorPicker wallColor, backgroundColor;
 	
-	private static Color color;
+	private static Color wColor, bgColor;
 	
 	
 	public void changeSecene() {
@@ -31,14 +30,15 @@ public class startController {
 //		Stage theStage = (Stage) ((Button) e.getSource()).getScene().getWindow();
 		Group root = new Group();
 		Scene theScene = new Scene( root );
+		theScene.setFill(bgColor);
 	    theStage.setScene(theScene );
 
 	    Canvas canvas = new Canvas( 1225, 600 );
 	    root.getChildren().add( canvas );
 	    GameManager gameManager = new GameManager(root);
 	    
-	    System.out.println("color to all drawBoard: " + color);
-	    gameManager.drawBoard(color);
+	    System.out.println("color to all drawBoard: " + wColor);
+	    gameManager.drawBoard(wColor);
 	         
 
 	    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
@@ -74,7 +74,11 @@ public class startController {
 	
 	public void changeColor(ActionEvent event){
 		// get the color picker's value for the wall color.
-		color = choice.getValue();
+		wColor = wallColor.getValue();
 	}
 	
+	public void changeBackground(ActionEvent event) {
+		// get the color picker's value for the background.
+		bgColor = backgroundColor.getValue(); 
+	}
 }
