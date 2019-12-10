@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="PickColor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.setUpController">
+   <children>
+      <Button fx:id="back" layoutX="495.0" layoutY="329.0" mnemonicParsing="false" onAction="#goBack" text="Go Back" />
+      <ColorPicker fx:id="choice" layoutX="52.0" layoutY="102.0" promptText="Color for the wall" />
+   </children>
+</Pane>
