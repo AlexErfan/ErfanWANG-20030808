@@ -3,7 +3,11 @@ package sample;
 
 
 import javafx.animation.AnimationTimer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -34,7 +38,7 @@ public class GameManager {
     
     private Color color;
     private int round;
-    public ArrayList<Record> scorePopUp = new ArrayList<Record>();
+    public ObservableList<Record> scorePopUp = FXCollections.observableArrayList();
 
     /**
      * Constructor
@@ -98,7 +102,9 @@ public class GameManager {
         
         //add scores and rounds into the scorePopUp and sort the array list.
         round ++;
-        scorePopUp.add(new Record(score, round));
+        Record temp = new Record(score, round);
+        System.out.println("Record is not empty: " + temp.getScore());
+        scorePopUp.add(temp);
         
         // sort the array in descending order.
         Collections.sort(scorePopUp, Collections.reverseOrder());
@@ -109,8 +115,17 @@ public class GameManager {
         }
         
         // call out the controller method.
-        popController pop = new popController();
-        pop.popUp(scorePopUp);
+        Parent popUp = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
+        try {
+			popUp = (Parent) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        popController pop = loader.getController();
+     
+        pop.popUp(scorePopUp, popUp);
     }
 
     /**

@@ -31,6 +31,8 @@ public class Main extends Application {
         theStage.setScene(startScene);
         
         theStage.show();
+        
+        System.out.println("This is on branch");
        
     }
 

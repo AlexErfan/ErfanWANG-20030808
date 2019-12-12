@@ -11,10 +11,10 @@ public class Record implements Comparable<Record> {
 		this.round = round;
 	}
 	public int getScore() {
-		return score;
+		return this.score;
 	}
 	public int getRound() {
-		return round;
+		return this.round;
 	}
 	public int compareTo(Record record) {
 		// TODO Auto-generated method stub
