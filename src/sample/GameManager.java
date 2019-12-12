@@ -103,7 +103,7 @@ public class GameManager {
         //add scores and rounds into the scorePopUp and sort the array list.
         round ++;
         Record temp = new Record(score, round);
-        System.out.println("Record is not empty: " + temp.getScore());
+//        System.out.println("Record is not empty: " + temp.getScore());
         scorePopUp.add(temp);
         
         // sort the array in descending order.
@@ -342,14 +342,22 @@ public class GameManager {
             switch (direction) {
                 case "left":
                     if (!maze.isTouching(pacman.getCenterX() - pacman.getRadius(), pacman.getCenterY(), 15)) {
-                        pacman.setCenterX(pacman.getCenterX() - step);
+                    	// pacman reaches the left hole.
+                    	if(pacman.getCenterX() <= 0)
+                    		pacman.setCenterX(1225); // put it to the right most of the map
+                    	else
+                    		pacman.setCenterX(pacman.getCenterX() - step);
                         checkCookieCoalition(pacman, "x");
                         checkGhostCoalition();
                     }
                     break;
                 case "right":
                     if (!maze.isTouching(pacman.getCenterX() + pacman.getRadius(), pacman.getCenterY(), 15)) {
-                        pacman.setCenterX(pacman.getCenterX() + step);
+                    	// pacman reaches the right hole
+                    	if(pacman.getCenterX() >= 1225)
+                    		pacman.setCenterX(0);
+                    	else
+                    		pacman.setCenterX(pacman.getCenterX() + step);
                         checkCookieCoalition(pacman, "x");
                         checkGhostCoalition();
                     }
