@@ -66,9 +66,11 @@ public class Maze {
         // bottom
         this.obstacles.add(new BarObstacle(0, 600, "horizontal", 48, color));
         // left
-        this.obstacles.add(new BarObstacle(0, 0, "vertical", 25, color));
+        this.obstacles.add(new BarObstacle(0, 0, "vertical", 11, color));
+        this.obstacles.add(new BarObstacle(0, 350, "vertical", 11, color));
         // right
-        this.obstacles.add(new BarObstacle(1225 - BarObstacle.THICKNESS, 0, "vertical", 25, color));
+        this.obstacles.add(new BarObstacle(1225 - BarObstacle.THICKNESS, 0, "vertical", 11, color));
+        this.obstacles.add(new BarObstacle(1225 - BarObstacle.THICKNESS, 350, "vertical", 11, color));
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~ Islands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // obsTopLeft
