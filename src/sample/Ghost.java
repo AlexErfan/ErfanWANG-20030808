@@ -109,7 +109,10 @@ public class Ghost extends Rectangle implements Runnable {
         switch (whereToGo) {
             case "left":
                 if (!maze.isTouching(leftEdge, topEdge, padding)) {
-                    setX(leftEdge - step);
+                	if (leftEdge <= 0)
+                		setX(1225);
+                	else
+                		setX(leftEdge - step);
                 } else {
                     while (maze.isTouching(getX(), getY(), padding)) {
                         setX(getX() + 1);
@@ -119,6 +122,11 @@ public class Ghost extends Rectangle implements Runnable {
                 break;
             case "right":
                 if (!maze.isTouching(rightEdge, topEdge, padding)) {
+                	if (rightEdge >= 1225) {
+                		setX(0);
+                		setY(topEdge);
+                	}
+                		
                     setX(leftEdge + step);
                 } else {
                     while (maze.isTouching(getX() + getWidth(), getY(), padding)) {
@@ -129,7 +137,7 @@ public class Ghost extends Rectangle implements Runnable {
                 break;
             case "up":
                 if (!maze.isTouching(leftEdge, topEdge, padding)) {
-                    setY(topEdge - step);
+                	setY(topEdge - step);
                 } else {
                     while (maze.isTouching(getX(), getY(), padding)) {
                         setY(getY() + 1);
@@ -138,8 +146,8 @@ public class Ghost extends Rectangle implements Runnable {
                 }
                 break;
             case "down":
-                if (!maze.isTouching(leftEdge, bottomEdge, padding)) {
-                    setY(topEdge + step);
+                if (!maze.isTouching(leftEdge, bottomEdge, padding)) {  
+                	setY(topEdge + step);
                 } else {
                     while (maze.isTouching(getX(), getY() + getHeight(), padding)) {
                         setY(getY() - 1);
