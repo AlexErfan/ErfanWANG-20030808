@@ -32,7 +32,6 @@ public class Main extends Application {
         
         theStage.show();
         
-        System.out.println("This is on branch");
        
     }
 

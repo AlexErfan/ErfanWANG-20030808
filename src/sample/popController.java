@@ -22,16 +22,10 @@ public class popController {
 	private ObservableList<Integer> scoreList = FXCollections.observableArrayList();
 	private ObservableList<Integer> roundList = FXCollections.observableArrayList();
 	
-//	@FXML private void initialize() {
-//		// Put items on to the list view.
-//		scores.setItems(scoreList);
-//		rounds.setItems(roundList);
-//	}
-	
 	public void popUp(ObservableList<Record> records, Parent popUp){
 		// extract scores and rounds in from records to scoreList and roundList respectively.
 		for(Record record: records) {
-			System.out.println("Score(debug): " + record.getScore() + " Round: " + record.getRound());
+//			System.out.println("Score(debug): " + record.getScore() + " Round: " + record.getRound());
 			int scoreTemp = record.getScore();
 			int roundTemp = record.getRound();
 			scoreList.add(scoreTemp);
@@ -42,15 +36,7 @@ public class popController {
 		rounds.setItems(roundList);
 		
 		// show the pop up interface
-	    Stage popUpStage = new Stage();
-//	    Parent popUp = null;
-//		try {
-//			popUp = FXMLLoader.load(getClass().getResource("scoreBoard.fxml"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	    
+	    Stage popUpStage = new Stage();   
 	    Scene pop = new Scene(popUp);
 	    popUpStage.setScene(pop);
 	    popUpStage.show();

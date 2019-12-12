@@ -37,7 +37,7 @@ public class startController {
 	    root.getChildren().add( canvas );
 	    GameManager gameManager = new GameManager(root);
 	    
-	    System.out.println("color to all drawBoard: " + wColor);
+//	    System.out.println("color to all drawBoard: " + wColor);
 	    gameManager.drawBoard(wColor);
 	         
 
