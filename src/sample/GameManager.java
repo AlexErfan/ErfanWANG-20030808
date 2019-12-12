@@ -439,6 +439,7 @@ public class GameManager {
 				    }
 				    this.scoreBoard.score.setText("Score: " + this.score);
 				    if (this.cookiesEaten == this.cookieSet.size()) {
+				    	this.cookiesEaten = 0;
 				        this.endGame();
 				    }
 				}
