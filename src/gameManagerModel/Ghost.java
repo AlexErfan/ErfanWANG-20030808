@@ -12,12 +12,12 @@ import java.util.Random;
 public class Ghost extends Rectangle implements Runnable {
 
     String direction;
-    PacmanMovement movement = new PacmanMovement();
+    GameManager gameManager;
     Maze maze;
     AnimationTimer animation;
     int timesWalked;
 
-    public Ghost(double x, double y, Color color, Maze maze) {
+    public Ghost(double x, double y, Color color, Maze maze, GameManager gameManager) {
         this.setX(x);
         this.setY(y);
         this.maze = maze;
@@ -27,6 +27,7 @@ public class Ghost extends Rectangle implements Runnable {
         this.timesWalked = 0;
         this.direction = "down";
         this.createAnimation();
+        this.gameManager = gameManager;
     }
 
     private String getRandomDirection(String exclude1, String exclude2) {
@@ -167,7 +168,7 @@ public class Ghost extends Rectangle implements Runnable {
         {
             public void handle(long currentNanoTime)
             {
-                movement.checkGhostCoalition();
+                gameManager.checkGhostCoalition();
                 double leftEdge = getX();
                 double topEdge = getY();
                 double rightEdge = getX() + getWidth();

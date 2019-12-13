@@ -1,5 +1,6 @@
 package gameManagerView;
 
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,35 +11,30 @@ import gameManagerModel.Ghost;
 import gameManagerModel.Maze;
 import gameManagerModel.Pacman;
 import gameManagerModel.Score;
-import javafx.animation.AnimationTimer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import popUpPage.Record;
 import sample.GameManager;
 
-public class Game {
+public class GameView {
 	 public static Pacman pacman;
 	 public static Set<Cookie> cookieSet;
 	 public static Set<Ghost> ghosts;
 	 public static Maze maze;
 	 public static Score scoreBoard;	    
 	 public static Color color;
-	 public static int lifes;
-	 public static int score;
+	 private GameManager gameManager;
 	 
 	 /**
 	  * Constructor
 	  */
-	 public Game() {
-		 this.maze = new Maze();
-		 this.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
-		 this.cookieSet = new HashSet<>();
-		 this.ghosts = new HashSet<>();
-		 this.lifes = 3;
-		 this.score = 0;
+	 public GameView(GameManager gameManager) {
+		 GameView.maze = new Maze();
+		 GameView.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+		 GameView.cookieSet = new HashSet<>();
+		 GameView.ghosts = new HashSet<>();
+		 this.gameManager = gameManager;
 	  }
+	 
 	
 	/**
      * Draws the board of the game with the cookies and the Pacman
@@ -46,18 +42,18 @@ public class Game {
      */
     public void drawBoard(Color wColor) {
     	if (wColor == null)
-    		this.color = Color.CADETBLUE;
+    		GameView.color = Color.CADETBLUE;
     	else
-    		this.color = wColor;
-        this.maze.CreateMaze(GameManager.getRoot(), this.color);
+    		GameView.color = wColor;
+        GameView.maze.CreateMaze(GameManager.root, GameView.color);
         
         // 1st line
         Integer skip[] = {5, 17};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -66,8 +62,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 4.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -76,8 +72,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 6.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -86,8 +82,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 8.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -96,8 +92,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 10.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -106,8 +102,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -116,8 +112,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 14.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -126,8 +122,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 16.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -136,8 +132,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 18.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -146,8 +142,8 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 20.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
 
@@ -156,23 +152,23 @@ public class Game {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 22.5 * BarObstacle.THICKNESS);
-                this.cookieSet.add(cookie);
-                GameManager.getRoot().getChildren().add(cookie);
+                GameView.cookieSet.add(cookie);
+                GameManager.root.getChildren().add(cookie);
             }
         }
-        GameManager.getRoot().getChildren().add(Game.pacman);
-        this.generateGhosts();
-        GameManager.getRoot().getChildren().addAll(Game.ghosts);
-        this.scoreBoard = new Score(GameManager.getRoot());
+        GameManager.root.getChildren().add(GameView.pacman);
+        generateGhosts();
+        GameManager.root.getChildren().addAll(GameView.ghosts);
+        GameView.scoreBoard = new Score(GameManager.root);
     }
 
     /**
      * Generates the ghosts for the pacman!
      */
     public void generateGhosts() {
-        this.ghosts.add(new Ghost(18.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.DEEPPINK, maze));
-        this.ghosts.add(new Ghost(22.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.GREENYELLOW, maze));
-        this.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.BLACK, maze));
-        this.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 9.5 * BarObstacle.THICKNESS, Color.SPRINGGREEN, maze));
+        GameView.ghosts.add(new Ghost(18.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.DEEPPINK, maze, gameManager));
+        GameView.ghosts.add(new Ghost(22.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.GREENYELLOW, maze, gameManager));
+        GameView.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.BLACK, maze, gameManager));
+        GameView.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 9.5 * BarObstacle.THICKNESS, Color.SPRINGGREEN, maze, gameManager));
     }
 }

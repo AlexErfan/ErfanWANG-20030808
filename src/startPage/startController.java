@@ -2,11 +2,7 @@ package startPage;
 
 
 import java.io.IOException;
-
-import gamaManageControl.EndGameControl;
-import gamaManageControl.PacmanControl;
-import gameManagerModel.PacmanMovement;
-import gameManagerView.Game;
+import gameManagerView.GameView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,17 +36,14 @@ public class startController {
 	    Canvas canvas = new Canvas( 1225, 600 );
 	    root.getChildren().add( canvas );
 	    GameManager gameManager = new GameManager(root);
-	    Game gameBoard = new Game();
-	    EndGameControl gameControl = new EndGameControl();
-	    PacmanControl movePac = new PacmanControl();
 	    
 //	    System.out.println("color to all drawBoard: " + wColor);
-	    gameBoard.drawBoard(wColor);
+	    gameManager.gameBoard.drawBoard(wColor);
 	         
 
-	    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> movePac.movePacman(event));
-	    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> movePac.stopPacman(event));
-	    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameControl.restartGame(event));
+	    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
+	    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.stopPacman(event));
+	    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.restartGame(event));
 
 	    theStage.show();
 	}

@@ -2,6 +2,8 @@ package gameManagerModel;
 
 
 
+import gameManagerView.GameView;
+import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
