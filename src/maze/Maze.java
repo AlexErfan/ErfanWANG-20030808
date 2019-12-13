@@ -1,4 +1,4 @@
-package sample;
+package maze;
 
 
 
@@ -12,7 +12,7 @@ public class Maze {
 
     public Set<BarObstacle> obstacles;
 
-    Maze() {
+    public Maze() {
         obstacles = new HashSet<>();
     }
 

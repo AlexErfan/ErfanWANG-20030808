@@ -21,7 +21,7 @@ public class Main extends Application {
         theStage.setTitle( "Welcome!" );
         
         
-        FXMLLoader startPaneLoader = new FXMLLoader(getClass().getResource("start.fxml"));
+        FXMLLoader startPaneLoader = new FXMLLoader(getClass().getResource("../startPage/start.fxml"));
         Parent start = startPaneLoader.load();
         
         

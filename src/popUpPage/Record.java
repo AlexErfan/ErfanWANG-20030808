@@ -1,4 +1,4 @@
-package sample;
+package popUpPage;
 
 // A Record class holds one set of score and round.
 public class Record implements Comparable<Record> {

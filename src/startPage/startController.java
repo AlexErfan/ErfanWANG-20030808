@@ -1,9 +1,7 @@
-package sample;
+package startPage;
+
 
 import java.io.IOException;
-
-import com.sun.corba.se.impl.orbutil.graph.Node;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +14,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sample.*;
 
 public class startController {
 	@FXML private Button start, setup, back;
