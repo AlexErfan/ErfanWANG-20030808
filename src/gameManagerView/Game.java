@@ -1,28 +1,44 @@
-package gameFlow;
+package gameManagerView;
 
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
-import characters.Ghost;
+import gameManagerModel.BarObstacle;
+import gameManagerModel.Cookie;
+import gameManagerModel.Ghost;
+import gameManagerModel.Maze;
+import gameManagerModel.Pacman;
+import gameManagerModel.Score;
+import javafx.animation.AnimationTimer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import maze.BarObstacle;
-import maze.Cookie;
 import popUpPage.Record;
-import popUpPage.popController;
+import sample.GameManager;
 
-public class Round {
-	public static ObservableList<Record> scorePopUp = FXCollections.observableArrayList();
-	private static boolean gameEnded;
-	private static int round;
-	
+public class Game {
+	 public static Pacman pacman;
+	 public static Set<Cookie> cookieSet;
+	 public static Set<Ghost> ghosts;
+	 public static Maze maze;
+	 public static Score scoreBoard;	    
+	 public static Color color;
+	 public static int lifes;
+	 public static int score;
+	 
+	 /**
+	  * Constructor
+	  */
+	 public Game() {
+		 this.maze = new Maze();
+		 this.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+		 this.cookieSet = new HashSet<>();
+		 this.ghosts = new HashSet<>();
+		 this.lifes = 3;
+		 this.score = 0;
+	  }
 	
 	/**
      * Draws the board of the game with the cookies and the Pacman
@@ -33,7 +49,7 @@ public class Round {
     		this.color = Color.CADETBLUE;
     	else
     		this.color = wColor;
-        this.maze.CreateMaze(root, this.color);
+        this.maze.CreateMaze(GameManager.getRoot(), this.color);
         
         // 1st line
         Integer skip[] = {5, 17};
@@ -41,7 +57,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -51,7 +67,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 4.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -61,7 +77,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 6.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -71,7 +87,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 8.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -81,7 +97,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 10.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -91,7 +107,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -101,7 +117,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 14.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -111,7 +127,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 16.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -121,7 +137,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 18.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -131,7 +147,7 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 20.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
 
@@ -141,83 +157,22 @@ public class Round {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 22.5 * BarObstacle.THICKNESS);
                 this.cookieSet.add(cookie);
-                root.getChildren().add(cookie);
+                GameManager.getRoot().getChildren().add(cookie);
             }
         }
-        root.getChildren().add(this.pacman);
+        GameManager.getRoot().getChildren().add(Game.pacman);
         this.generateGhosts();
-        root.getChildren().addAll(this.ghosts);
-        this.scoreBoard = new Score(root);
-    }
-	
-	
-	
-	
-	
-    /**
-     * Ends the game
-     * @throws IOException 
-     */
-    private void endGame(){
-        this.gameEnded = true;
-        root.getChildren().remove(pacman);
-        for (Ghost ghost : ghosts) {
-            root.getChildren().remove(ghost);
-        }
-        javafx.scene.text.Text endGame = new javafx.scene.text.Text("Game Over, press ESC to restart");
-        endGame.setX(BarObstacle.THICKNESS * 3);
-        endGame.setY(BarObstacle.THICKNESS * 28);
-        endGame.setFont(Font.font("Arial", 40));
-        endGame.setFill(Color.ROYALBLUE);
-        root.getChildren().remove(this.scoreBoard.score);
-        root.getChildren().remove(this.scoreBoard.lifes);
-        root.getChildren().add(endGame);
-        
-        //add scores and rounds into the scorePopUp and sort the array list.
-        round ++;
-        Record temp = new Record(score, round);
-//        System.out.println("Record is not empty: " + temp.getScore());
-        scorePopUp.add(temp);
-        
-        // sort the array in descending order.
-        Collections.sort(scorePopUp, Collections.reverseOrder());
-        
-        // DEBUG use
-        for(Record record: scorePopUp) {
-        	System.out.println("Score: " + record.getScore() + " Round: " + record.getRound());
-        }
-        
-        // call out the controller method.
-        Parent popUp = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../popUpPage/scoreBoard.fxml"));
-        try {
-			popUp = (Parent) loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        popController pop = loader.getController();
-     
-        pop.popUp(scorePopUp, popUp);
+        GameManager.getRoot().getChildren().addAll(Game.ghosts);
+        this.scoreBoard = new Score(GameManager.getRoot());
     }
 
     /**
-     * Restart the game
-     * @param event
+     * Generates the ghosts for the pacman!
      */
-    public void restartGame(KeyEvent event) {
-        if (event.getCode() == KeyCode.ESCAPE && gameEnded) {
-            root.getChildren().clear();
-            this.cookieSet.clear();
-            this.ghosts.clear();
-            this.drawBoard(color);
-            this.pacman.setCenterX(2.5 * BarObstacle.THICKNESS);
-            this.pacman.setCenterY(2.5 * BarObstacle.THICKNESS);
-            this.lifes = 3;
-            this.score = 0;
-            this.cookiesEaten = 0;
-            gameEnded = false;
-        }
+    public void generateGhosts() {
+        this.ghosts.add(new Ghost(18.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.DEEPPINK, maze));
+        this.ghosts.add(new Ghost(22.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.GREENYELLOW, maze));
+        this.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.BLACK, maze));
+        this.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 9.5 * BarObstacle.THICKNESS, Color.SPRINGGREEN, maze));
     }
-
 }

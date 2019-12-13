@@ -12,11 +12,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import maze.BarObstacle;
-import maze.Cookie;
-import maze.Maze;
 import popUpPage.Record;
-import popUpPage.popController;
+import popUpPage.PopController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,32 +21,30 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
-import characters.Ghost;
-import characters.Pacman;
-import characters.ghostGenerator;
-import gameFlow.Round;
-import gameFlow.Score;
+import gameManagerModel.BarObstacle;
+import gameManagerModel.Cookie;
+import gameManagerModel.Ghost;
+import gameManagerModel.Maze;
+import gameManagerModel.Pacman;
+import gameManagerModel.Score;
 
 public class GameManager {
 
-	private Round rounding;
-    private Pacman pacman;
-    private Group root;
+    private static Group root;
 //    private Set<Cookie> cookieSet;
 //    private Set<Ghost> ghosts;
-    private AnimationTimer leftPacmanAnimation;
-    private AnimationTimer rightPacmanAnimation;
-    private AnimationTimer upPacmanAnimation;
-    private AnimationTimer downPacmanAnimation;
-    private Maze maze;
+//    private AnimationTimer leftPacmanAnimation;
+//    private AnimationTimer rightPacmanAnimation;
+//    private AnimationTimer upPacmanAnimation;
+//    private AnimationTimer downPacmanAnimation;
+//    private Maze maze;
 //    private int lifes;
 //    private int score;
 //    private Score scoreBoard;
 //    private boolean gameEnded;
-//    private int cookiesEaten;
+    private int cookiesEaten;
     
-    private Color color;
+//    private Color color;
 //    private int round;
 //    public ObservableList<Record> scorePopUp = FXCollections.observableArrayList();
 
@@ -60,7 +55,7 @@ public class GameManager {
     	
         this.root = root;
 //        this.maze = new Maze();
-        this.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+//        this.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
 //        this.cookieSet = new HashSet<>();
 //        this.ghosts = new HashSet<>();
 //        this.leftPacmanAnimation = this.createAnimation("left");
@@ -101,18 +96,18 @@ public class GameManager {
 //     */
 //    private void endGame(){
 //        this.gameEnded = true;
-//        root.getChildren().remove(pacman);
+//        getRoot().getChildren().remove(pacman);
 //        for (Ghost ghost : ghosts) {
-//            root.getChildren().remove(ghost);
+//            getRoot().getChildren().remove(ghost);
 //        }
 //        javafx.scene.text.Text endGame = new javafx.scene.text.Text("Game Over, press ESC to restart");
 //        endGame.setX(BarObstacle.THICKNESS * 3);
 //        endGame.setY(BarObstacle.THICKNESS * 28);
 //        endGame.setFont(Font.font("Arial", 40));
 //        endGame.setFill(Color.ROYALBLUE);
-//        root.getChildren().remove(this.scoreBoard.score);
-//        root.getChildren().remove(this.scoreBoard.lifes);
-//        root.getChildren().add(endGame);
+//        getRoot().getChildren().remove(this.scoreBoard.score);
+//        getRoot().getChildren().remove(this.scoreBoard.lifes);
+//        getRoot().getChildren().add(endGame);
 //        
 //        //add scores and rounds into the scorePopUp and sort the array list.
 //        round ++;
@@ -137,7 +132,7 @@ public class GameManager {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//        popController pop = loader.getController();
+//        PopController pop = loader.getController();
 //     
 //        pop.popUp(scorePopUp, popUp);
 //    }
@@ -148,7 +143,7 @@ public class GameManager {
 //     */
 //    public void restartGame(KeyEvent event) {
 //        if (event.getCode() == KeyCode.ESCAPE && gameEnded) {
-//            root.getChildren().clear();
+//            getRoot().getChildren().clear();
 //            this.cookieSet.clear();
 //            this.ghosts.clear();
 //            this.drawBoard(color);
@@ -160,6 +155,11 @@ public class GameManager {
 //            gameEnded = false;
 //        }
 //    }
+
+	public static Group getRoot() {
+		// TODO Auto-generated method stub
+		return root;
+	}
 
 //    /**
 //     * Draws the board of the game with the cookies and the Pacman
@@ -286,7 +286,7 @@ public class GameManager {
 //        root.getChildren().addAll(this.ghosts);
 //        this.scoreBoard = new Score(root);
 //    }
-
+//
 //    /**
 //     * Generates the ghosts for the pacman!
 //     */
@@ -297,50 +297,50 @@ public class GameManager {
 //        this.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 9.5 * BarObstacle.THICKNESS, Color.SPRINGGREEN, maze, this));
 //    }
 
-    /**
-     * Moves the pacman
-     * @param event
-     */
-    public void movePacman(KeyEvent event) {
-    	for (Ghost ghost : ghostGenerator.getGhosts()) {
-            ghost.run();
-        }
-        switch(event.getCode()) {
-            case RIGHT:
-                this.rightPacmanAnimation.start();
-                break;
-            case LEFT:
-                this.leftPacmanAnimation.start();
-                break;
-            case UP:
-                this.upPacmanAnimation.start();
-                break;
-            case DOWN:
-                this.downPacmanAnimation.start();
-                break;
-        }
-    }
+//    /**
+//     * Moves the pacman
+//     * @param event
+//     */
+//    public void movePacman(KeyEvent event) {
+//    	for (Ghost ghost : ghostGenerator.getGhosts()) {
+//            ghost.run();
+//        }
+//        switch(event.getCode()) {
+//            case RIGHT:
+//                this.rightPacmanAnimation.start();
+//                break;
+//            case LEFT:
+//                this.leftPacmanAnimation.start();
+//                break;
+//            case UP:
+//                this.upPacmanAnimation.start();
+//                break;
+//            case DOWN:
+//                this.downPacmanAnimation.start();
+//                break;
+//        }
+//    }
 
-    /**
-     * Stops the pacman
-     * @param event
-     */
-    public void stopPacman(KeyEvent event) {
-        switch(event.getCode()) {
-            case RIGHT:
-                this.rightPacmanAnimation.stop();
-                break;
-            case LEFT:
-                this.leftPacmanAnimation.stop();
-                break;
-            case UP:
-                this.upPacmanAnimation.stop();
-                break;
-            case DOWN:
-                this.downPacmanAnimation.stop();
-                break;
-        }
-    }
+//    /**
+//     * Stops the pacman
+//     * @param event
+//     */
+//    public void stopPacman(KeyEvent event) {
+//        switch(event.getCode()) {
+//            case RIGHT:
+//                this.rightPacmanAnimation.stop();
+//                break;
+//            case LEFT:
+//                this.leftPacmanAnimation.stop();
+//                break;
+//            case UP:
+//                this.upPacmanAnimation.stop();
+//                break;
+//            case DOWN:
+//                this.downPacmanAnimation.stop();
+//                break;
+//        }
+//    }
 
 //    /**
 //     * Creates an animation of the movement.
@@ -394,7 +394,7 @@ public class GameManager {
 //            }
 //        };
 //    }
-
+//
 //    /**
 //     * Checks if the Pacman touches cookies.
 //     * @param pacman
@@ -490,5 +490,9 @@ public class GameManager {
 //            }
 //        }
 //    }
+//
+//	public static Group getRoot() {
+//		return root;
+//	}
 
 }

@@ -1,31 +1,26 @@
-package characters;
+package gameManagerModel;
 
 
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import maze.Maze;
 import sample.GameManager;
-import gameFlow.*;
-
 import java.util.Random;
 
 
 public class Ghost extends Rectangle implements Runnable {
 
     String direction;
-    Coalition coalition;
+    PacmanMovement movement = new PacmanMovement();
     Maze maze;
     AnimationTimer animation;
     int timesWalked;
 
-    public Ghost(double x, double y, Color color, Maze maze, GameManager gameManager) {
+    public Ghost(double x, double y, Color color, Maze maze) {
         this.setX(x);
         this.setY(y);
         this.maze = maze;
-//        this.gameManager = gameManager;
-        this.coalition = new Coalition();
         this.setHeight(50);
         this.setWidth(50);
         this.setFill(color);
@@ -172,7 +167,7 @@ public class Ghost extends Rectangle implements Runnable {
         {
             public void handle(long currentNanoTime)
             {
-                coalition.checkGhostCoalition();
+                movement.checkGhostCoalition();
                 double leftEdge = getX();
                 double topEdge = getY();
                 double rightEdge = getX() + getWidth();

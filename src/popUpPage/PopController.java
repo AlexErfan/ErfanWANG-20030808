@@ -15,7 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 
-public class popController {
+public class PopController {
 	@FXML private ListView<Integer> scores, rounds;
 	@FXML private Button closePopUp;
 	
