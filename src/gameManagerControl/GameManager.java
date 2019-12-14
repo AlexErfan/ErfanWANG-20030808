@@ -23,11 +23,11 @@ import java.util.HashSet;
 import java.util.Set;
 import gameManagerModel.BarObstacle;
 import gameManagerModel.Cookie;
-import gameManagerModel.Ghost;
 import gameManagerModel.Maze;
 import gameManagerModel.Pacman;
 import gameManagerModel.Score;
 import gameManagerView.GameView;
+import ghostFactoryPattern.Ghost;
 
 public class GameManager {
 

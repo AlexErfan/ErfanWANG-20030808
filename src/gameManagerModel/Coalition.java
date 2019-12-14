@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import gameManagerControl.GameManager;
 import gameManagerView.GameView;
+import ghostFactoryPattern.Ghost;
 
 public class Coalition {
 	 /**

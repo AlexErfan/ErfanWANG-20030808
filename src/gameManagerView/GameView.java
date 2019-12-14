@@ -8,10 +8,11 @@ import java.util.Set;
 import gameManagerControl.GameManager;
 import gameManagerModel.BarObstacle;
 import gameManagerModel.Cookie;
-import gameManagerModel.Ghost;
 import gameManagerModel.Maze;
 import gameManagerModel.Pacman;
 import gameManagerModel.Score;
+import ghostFactoryPattern.Ghost;
+import ghostFactoryPattern.GhostFactory;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 
@@ -22,7 +23,7 @@ public class GameView {
 	 public static Maze maze;
 	 public static Score scoreBoard;	    
 	 public static Color color;
-	 private GameManager gameManager;
+	 public static GameManager gameManager;
 	 
 	 /**
 	  * Constructor
@@ -32,7 +33,7 @@ public class GameView {
 		 GameView.pacman = Pacman.getInstance();
 		 GameView.cookieSet = new HashSet<>();
 		 GameView.ghosts = new HashSet<>();
-		 this.gameManager = gameManager;
+		 GameView.gameManager = gameManager;
 	  }
 	 
 	
@@ -166,9 +167,10 @@ public class GameView {
      * Generates the ghosts for the pacman!
      */
     public void generateGhosts() {
-        GameView.ghosts.add(new Ghost(18.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.DEEPPINK, maze, gameManager, "ghost1.png"));
-        GameView.ghosts.add(new Ghost(22.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.GREENYELLOW, maze, gameManager, "ghost2.png"));
-        GameView.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.BLACK, maze, gameManager, "ghost3.png"));
-        GameView.ghosts.add(new Ghost(28.5 * BarObstacle.THICKNESS, 9.5 * BarObstacle.THICKNESS, Color.SPRINGGREEN, maze, gameManager, "ghost4.png"));
+    	GhostFactory factory = new GhostFactory();
+        GameView.ghosts.add(factory.getGhost(1));
+        GameView.ghosts.add(factory.getGhost(2));
+        GameView.ghosts.add(factory.getGhost(3));
+        GameView.ghosts.add(factory.getGhost(4));
     }
 }

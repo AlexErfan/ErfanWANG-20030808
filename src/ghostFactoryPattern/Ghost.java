@@ -1,4 +1,4 @@
-package gameManagerModel;
+package ghostFactoryPattern;
 
 
 
@@ -11,10 +11,12 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 
 import gameManagerControl.GameManager;
+import gameManagerModel.Coalition;
+import gameManagerModel.Maze;
 import gameManagerView.GameView;
 
 
-public class Ghost extends Rectangle implements Runnable {
+public class Ghost extends Rectangle implements Runnable{
 
     String direction;
     GameManager gameManager;
@@ -23,7 +25,8 @@ public class Ghost extends Rectangle implements Runnable {
     Coalition coalition = new Coalition();
     int timesWalked;
 
-    public Ghost(double x, double y, Color color, Maze maze, GameManager gameManager, String ghostName) {
+    
+    public Ghost(double x, double y, String ghostName, Maze maze, GameManager gameManager) {
         this.setX(x);
         this.setY(y);
         this.maze = maze;
@@ -36,7 +39,7 @@ public class Ghost extends Rectangle implements Runnable {
         this.createAnimation();
         this.gameManager = gameManager;
     }
-
+    
     private String getRandomDirection(String exclude1, String exclude2) {
         String[] directions = {"left", "right", "up", "down"};
         int rnd = new Random().nextInt(directions.length);

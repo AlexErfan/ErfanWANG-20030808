@@ -13,7 +13,7 @@ import javafx.scene.shape.Circle;
 public class Pacman extends Circle {
 	private static Pacman pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
 	
-	// Singleton class for the pacman
+	/* Singleton design for the pacman.*/
     private Pacman(double x, double y) {
         this.setCenterX(x);
         this.setCenterY(y);
