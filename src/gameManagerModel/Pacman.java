@@ -7,6 +7,7 @@ import gameManagerView.GameView;
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class Pacman extends Circle {
@@ -14,9 +15,9 @@ public class Pacman extends Circle {
     public Pacman(double x, double y) {
         this.setCenterX(x);
         this.setCenterY(y);
-//        Image img = new Image("pacman.png");
+        Image img = new Image(getClass().getResourceAsStream("pacman.png"));
         this.setRadius(25);
-        this.setFill(Color.YELLOW);
+        this.setFill(new ImagePattern(img));
     }
     
     /**
@@ -35,10 +36,14 @@ public class Pacman extends Circle {
                 case "left":
                     if (!GameView.maze.isTouching(GameView.pacman.getCenterX() - GameView.pacman.getRadius(), GameView.pacman.getCenterY(), 15)) {
                     	// GameView.pacman reaches the left hole.
-                    	if(GameView.pacman.getCenterX() <= 0)
+                    	if(GameView.pacman.getCenterX() <= 0) {
+                    		GameView.pacman.setRotate(180);
                     		GameView.pacman.setCenterX(1225); // put it to the right most of the map
-                    	else
+                    	}else {
+                    		GameView.pacman.setRotate(180);
                     		GameView.pacman.setCenterX(GameView.pacman.getCenterX() - step);
+                    	}
+                    		
                         coalition.checkCookieCoalition(GameView.pacman, "x", gameManager);
                         coalition.checkGhostCoalition(gameManager);
                     }
@@ -46,16 +51,20 @@ public class Pacman extends Circle {
                 case "right":
                     if (!GameView.maze.isTouching(GameView.pacman.getCenterX() + GameView.pacman.getRadius(), GameView.pacman.getCenterY(), 15)) {
                     	// GameView.pacman reaches the right hole
-                    	if(GameView.pacman.getCenterX() >= 1225)
+                    	if(GameView.pacman.getCenterX() >= 1225) {
+                    		GameView.pacman.setRotate(0);
                     		GameView.pacman.setCenterX(0);
-                    	else
+                    	}else {
+                    		GameView.pacman.setRotate(0);
                     		GameView.pacman.setCenterX(GameView.pacman.getCenterX() + step);
+                    	}
                         coalition.checkCookieCoalition(GameView.pacman, "x", gameManager);
                         coalition.checkGhostCoalition(gameManager);
                     }
                     break;
                 case "up":
                     if (!GameView.maze.isTouching(GameView.pacman.getCenterX(), GameView.pacman.getCenterY() - GameView.pacman.getRadius(), 15)) {
+                    	GameView.pacman.setRotate(270);
                         GameView.pacman.setCenterY(GameView.pacman.getCenterY() - step);
                         coalition.checkCookieCoalition(GameView.pacman, "y", gameManager);
                         coalition.checkGhostCoalition(gameManager);
@@ -63,6 +72,7 @@ public class Pacman extends Circle {
                     break;
                 case "down":
                    if (!GameView.maze.isTouching(GameView.pacman.getCenterX(), GameView.pacman.getCenterY() + GameView.pacman.getRadius(), 15)) {
+                	   GameView.pacman.setRotate(90);
                        GameView.pacman.setCenterY(GameView.pacman.getCenterY() + step);
                        coalition.checkCookieCoalition(GameView.pacman, "y", gameManager);
                        coalition.checkGhostCoalition(gameManager);

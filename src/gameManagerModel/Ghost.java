@@ -3,12 +3,15 @@ package gameManagerModel;
 
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
 
 import gameManagerControl.GameManager;
+import gameManagerView.GameView;
 
 
 public class Ghost extends Rectangle implements Runnable {
@@ -20,13 +23,14 @@ public class Ghost extends Rectangle implements Runnable {
     Coalition coalition = new Coalition();
     int timesWalked;
 
-    public Ghost(double x, double y, Color color, Maze maze, GameManager gameManager) {
+    public Ghost(double x, double y, Color color, Maze maze, GameManager gameManager, String ghostName) {
         this.setX(x);
         this.setY(y);
         this.maze = maze;
         this.setHeight(50);
         this.setWidth(50);
-        this.setFill(color);
+        Image img = new Image(getClass().getResourceAsStream(ghostName));
+        this.setFill(new ImagePattern(img));
         this.timesWalked = 0;
         this.direction = "down";
         this.createAnimation();
@@ -112,10 +116,11 @@ public class Ghost extends Rectangle implements Runnable {
         switch (whereToGo) {
             case "left":
                 if (!maze.isTouching(leftEdge, topEdge, padding)) {
-                	if (leftEdge <= 0)
+                	if (leftEdge <= 0) {
                 		setX(1225);
-                	else
+                	}else {
                 		setX(leftEdge - step);
+                	}
                 } else {
                     while (maze.isTouching(getX(), getY(), padding)) {
                         setX(getX() + 1);
@@ -128,9 +133,10 @@ public class Ghost extends Rectangle implements Runnable {
                 	if (rightEdge >= 1225) {
                 		setX(0);
                 		setY(topEdge);
+                	}else {
+                		setX(leftEdge + step);                		
                 	}
                 		
-                    setX(leftEdge + step);
                 } else {
                     while (maze.isTouching(getX() + getWidth(), getY(), padding)) {
                         setX(getX() - 1);
@@ -149,7 +155,7 @@ public class Ghost extends Rectangle implements Runnable {
                 }
                 break;
             case "down":
-                if (!maze.isTouching(leftEdge, bottomEdge, padding)) {  
+                if (!maze.isTouching(leftEdge, bottomEdge, padding)) {
                 	setY(topEdge + step);
                 } else {
                     while (maze.isTouching(getX(), getY() + getHeight(), padding)) {
