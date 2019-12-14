@@ -1,0 +1,38 @@
+.button {
+    -fx-background-color: #424242; /* Green */
+    -fx-border: none;
+    -fx-color: white;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 16px;
+    -fx-mark-color: orange;
+}
+
+.color-picker {
+	-fx-background-color: #7A7A7A;
+    -fx-border: none;
+    -fx-color: white;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 16px;
+    -fx-mark-color: orange;
+}
+
+.choice-box .menu-item:focused { 
+    -fx-background-color: orange; 
+} 
+.choice-box .menu-item:focused > .label { 
+    -fx-text-fill: black; 
+} 
+.choice-box { 
+    -fx-background-color: #7A7A7A;
+    -fx-border: none;
+    -fx-color: white;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 16px;
+    -fx-mark-color: orange;
+}

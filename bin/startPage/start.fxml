@@ -16,7 +16,7 @@
             <Image url="@background.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="setup" layoutX="429.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToSetup" text="SETUP" />
-      <Button fx:id="start" layoutX="131.0" layoutY="290.0" mnemonicParsing="false" onAction="#changeSecene" text="START!" />
+      <Button fx:id="setup" layoutX="429.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToSetup" style="-fx-font-family: verdana;" stylesheets="@../stylesheet.css" text="SETUP" textFill="WHITE" />
+      <Button fx:id="start" layoutX="131.0" layoutY="290.0" mnemonicParsing="false" onAction="#changeSecene" style="-fx-font-family: verdana;" stylesheets="@../stylesheet.css" text="START!" textFill="WHITE" />
    </children>
 </Pane>

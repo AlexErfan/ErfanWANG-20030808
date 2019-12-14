@@ -16,12 +16,15 @@
             <Image url="@background.jpg" />
          </image>
       </ImageView>
-      <ColorPicker fx:id="backgroundColor" layoutX="360.0" layoutY="102.0" onAction="#changeBackground" promptText="Color for the background" />
-      <ColorPicker fx:id="wallColor" layoutX="149.0" layoutY="102.0" onAction="#changeColor" promptText="Color for the wall" />
-      <Button fx:id="back" layoutX="495.0" layoutY="329.0" mnemonicParsing="false" onAction="#goBack" text="Go Back" />
-      <Text fill="WHITE" layoutX="164.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wall Color" />
-      <Text fill="WHITE" layoutX="353.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Background Color" />
-      <Text fill="WHITE" layoutX="260.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty Level" />
-      <ChoiceBox fx:id="level" layoutX="225.0" layoutY="302.0" prefWidth="150.0" />
+      <ColorPicker fx:id="backgroundColor" layoutX="360.0" layoutY="102.0" onAction="#changeBackground" promptText="Color for the background" stylesheets="@../stylesheet.css" />
+      <ColorPicker fx:id="wallColor" layoutX="109.0" layoutY="102.0" onAction="#changeColor" promptText="Color for the wall" stylesheets="@../stylesheet.css" />
+      <Button fx:id="back" layoutX="451.0" layoutY="329.0" mnemonicParsing="false" onAction="#goBack" style="-fx-font-family: verdana;" stylesheets="@../stylesheet.css" text="Go Back" textFill="WHITE" />
+      <Text fill="WHITE" layoutX="126.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: verdana;" text="Wall Color" />
+      <Text fill="WHITE" layoutX="352.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: verdana;" text="Background Color">
+         <font>
+            <Font name="System Font" size="13.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="252.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: verdana;" text="Difficulty Level" />
+      <ChoiceBox fx:id="level" layoutX="225.0" layoutY="302.0" prefWidth="150.0" stylesheets="@../stylesheet.css" />
    </children>
 </Pane>
