@@ -1,7 +1,5 @@
 package ghostFactoryPattern;
 
-import gameManagerView.GameView;
-
 public class GhostFactory {
 	public GhostGenerator generate = new GhostGenerator(); 
 	

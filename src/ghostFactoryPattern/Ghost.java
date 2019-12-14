@@ -4,7 +4,6 @@ package ghostFactoryPattern;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -47,11 +46,6 @@ public class Ghost extends Rectangle implements Runnable{
             rnd = new Random().nextInt(directions.length);
         }
         return directions[rnd];
-    }
-
-    private boolean getRandomBoolean() {
-        Random rand = new Random();
-        return rand.nextBoolean();
     }
 
     /**

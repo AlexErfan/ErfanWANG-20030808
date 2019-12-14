@@ -1,6 +1,5 @@
 package ghostFactoryPattern;
 
-import gameManagerControl.GameManager;
 import gameManagerModel.BarObstacle;
 import gameManagerView.GameView;
 

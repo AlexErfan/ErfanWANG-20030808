@@ -14,18 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import popUpPage.Record;
 import popUpPage.PopController;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 import gameManagerModel.BarObstacle;
-import gameManagerModel.Cookie;
-import gameManagerModel.Maze;
 import gameManagerModel.Pacman;
-import gameManagerModel.Score;
 import gameManagerView.GameView;
 import ghostFactoryPattern.Ghost;
 
@@ -54,8 +46,8 @@ public class GameManager {
         this.rightPacmanAnimation = Pacman.createAnimation("right", this);
         this.upPacmanAnimation = Pacman.createAnimation("up", this);
         this.downPacmanAnimation = Pacman.createAnimation("down", this);
-        this.lifes = 3;
-        this.score = 0;
+        GameManager.lifes = 3;
+        GameManager.score = 0;
     }
 
     /**
@@ -74,8 +66,8 @@ public class GameManager {
         GameView.pacman.setCenterY(2.5 * BarObstacle.THICKNESS);
         lifes--;
         score -= 10;
-        GameView.scoreBoard.lifes.setText("Lifes: " + this.lifes);
-        GameView.scoreBoard.score.setText("Score: " + this.score);
+        GameView.scoreBoard.lifes.setText("Lifes: " + GameManager.lifes);
+        GameView.scoreBoard.score.setText("Score: " + GameManager.score);
         if (lifes == 0) {
             this.endGame();
         }
@@ -139,9 +131,9 @@ public class GameManager {
             gameBoard.drawBoard(GameView.color, GameView.difficulty);
             GameView.pacman.setCenterX(2.5 * BarObstacle.THICKNESS);
             GameView.pacman.setCenterY(2.5 * BarObstacle.THICKNESS);
-            this.lifes = 3;
-            this.score = 0;
-            this.cookiesEaten = 0;
+            GameManager.lifes = 3;
+            GameManager.score = 0;
+            GameManager.cookiesEaten = 0;
             gameEnded = false;
         }
     }
@@ -167,6 +159,8 @@ public class GameManager {
             case DOWN:
                 this.downPacmanAnimation.start();
                 break;
+		default:
+			break;
         }
     }
 
@@ -188,6 +182,8 @@ public class GameManager {
             case DOWN:
                 this.downPacmanAnimation.stop();
                 break;
+		default:
+			break;
         }
     }
 

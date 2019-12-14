@@ -13,11 +13,13 @@ import gameManagerModel.Pacman;
 import gameManagerModel.Score;
 import ghostFactoryPattern.Ghost;
 import ghostFactoryPattern.GhostFactory;
-import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
+/*
+ * 
+ */
 public class GameView {
 	 public static Pacman pacman;
 	 public static Set<Cookie> cookieSet;
