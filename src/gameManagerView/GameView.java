@@ -29,7 +29,7 @@ public class GameView {
 	  */
 	 public GameView(GameManager gameManager) {
 		 GameView.maze = new Maze();
-		 GameView.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+		 GameView.pacman = Pacman.getInstance();
 		 GameView.cookieSet = new HashSet<>();
 		 GameView.ghosts = new HashSet<>();
 		 this.gameManager = gameManager;

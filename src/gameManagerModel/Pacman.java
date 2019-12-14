@@ -11,14 +11,21 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class Pacman extends Circle {
-
-    public Pacman(double x, double y) {
+	private static Pacman pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+	
+	// Singleton class for the pacman
+    private Pacman(double x, double y) {
         this.setCenterX(x);
         this.setCenterY(y);
         Image img = new Image(getClass().getResourceAsStream("pacman.png"));
         this.setRadius(25);
         this.setFill(new ImagePattern(img));
     }
+    
+    public static Pacman getInstance(){
+        return pacman;
+     }
+
     
     /**
      * Creates an animation of the movement.
