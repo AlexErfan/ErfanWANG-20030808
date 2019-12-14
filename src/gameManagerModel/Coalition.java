@@ -24,16 +24,22 @@ public class Coalition {
 				{
 				    double cookieCenterX = cookie.getCenterX();
 				    double cookieCenterY = cookie.getCenterY();
+				    
 				    double cookieLeftEdge = cookieCenterX - cookie.getRadius();
 				    double cookieRightEdge = cookieCenterX + cookie.getRadius();
 				    double cookieTopEdge = cookieCenterY - cookie.getRadius();
 				    double cookieBottomEdge = cookieCenterY + cookie.getRadius();
+
+				    System.out.println("cheery location x : " + GameView.cherry.getCenterX() + " y: " + GameView.cherry.getCenterY());
+//				    System.out.println("cheery location x : " + cookieCenterX + " y: " + cookieCenterY);
 				    if (axis.equals("x")) {
 				        // pacman goes right
 				        if ((cookieCenterY >= pacmanTopEdge && cookieCenterY <= pacmanBottomEdge) && (pacmanRightEdge >= cookieLeftEdge && pacmanRightEdge <= cookieRightEdge)) {
 				            if (cookie.isVisible()) {
 				                GameManager.score += cookie.getValue();
 				                GameManager.cookiesEaten++;
+				                if((162.5 >= pacmanTopEdge && 162.5 <= pacmanBottomEdge) && (pacmanRightEdge >= 1150 && pacmanRightEdge <= 1175))
+				                	GameManager.lifes ++;
 				            }
 				            cookie.hide();
 				        }
@@ -42,6 +48,8 @@ public class Coalition {
 				            if (cookie.isVisible()) {
 				                GameManager.score += cookie.getValue();
 				                GameManager.cookiesEaten++;
+				                if((162.5 >= pacmanTopEdge && 162.5 <= pacmanBottomEdge) && (pacmanLeftEdge >= 1150 && pacmanLeftEdge <= 1175))
+				                	GameManager.lifes ++;
 				            }
 				            cookie.hide();
 				        }
@@ -51,6 +59,8 @@ public class Coalition {
 				            if (cookie.isVisible()) {
 				                GameManager.score += cookie.getValue();
 				                GameManager.cookiesEaten++;
+				                if((1162.5 >= pacmanLeftEdge && 1162.5 <= pacmanRightEdge) && (pacmanBottomEdge >= 150 && pacmanBottomEdge <= 175))
+				                	GameManager.lifes ++;
 				            }
 				            cookie.hide();
 				        }
@@ -59,11 +69,14 @@ public class Coalition {
 				            if (cookie.isVisible()) {
 				                GameManager.score += cookie.getValue();
 				                GameManager.cookiesEaten++;
+				                if((1162.5 >= pacmanLeftEdge && 1162.5 <= pacmanRightEdge) && (pacmanTopEdge <= 175 && pacmanTopEdge >= 150))
+				                	GameManager.lifes ++;
 				            }
 				            cookie.hide();
 				        }
 				    }
 				    GameView.scoreBoard.score.setText("Score: " + GameManager.score);
+				    GameView.scoreBoard.lifes.setText("Lifes: " + GameManager.lifes);
 				    if (GameManager.cookiesEaten == GameView.cookieSet.size()) {
 				    	GameManager.cookiesEaten = 0;
 				        gameManager.endGame();

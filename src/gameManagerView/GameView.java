@@ -14,7 +14,9 @@ import gameManagerModel.Score;
 import ghostFactoryPattern.Ghost;
 import ghostFactoryPattern.GhostFactory;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 
 public class GameView {
 	 public static Pacman pacman;
@@ -24,7 +26,7 @@ public class GameView {
 	 public static Score scoreBoard;	    
 	 public static Color color;
 	 public static GameManager gameManager;
-	 
+	 public static Cookie cherry;
 	 /**
 	  * Constructor
 	  */
@@ -73,6 +75,11 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 6.5 * BarObstacle.THICKNESS);
+                if(i == 22) {
+                	Image img = new Image(getClass().getResourceAsStream("cherry.jpeg"));
+                	cookie.setFill(new ImagePattern(img));
+                	cherry = cookie;
+                }
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
