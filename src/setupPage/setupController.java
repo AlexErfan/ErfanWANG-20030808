@@ -1,4 +1,4 @@
-package startPage;
+package setupPage;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class setupController {
 	public void goBack(ActionEvent event) throws IOException {
 		setupController.difficulty = level.getValue().toString();
 		
-		Parent start = FXMLLoader.load(getClass().getResource("start.fxml"));
+		Parent start = FXMLLoader.load(getClass().getResource("../startPage/start.fxml"));
 		Scene startScene = new Scene(start);
 			
 		// this line gets the stage information
