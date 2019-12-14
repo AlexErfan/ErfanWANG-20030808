@@ -3,9 +3,19 @@ package ghostFactoryPattern;
 import gameManagerModel.BarObstacle;
 import gameManagerView.GameView;
 
+/**
+ * Implement the interface.
+ * @author alex
+ *
+ */
 public class GhostGenerator implements GhostInterface{
 	private Ghost ghost = null;
 
+	/**
+	 * Generate ghost according to the numbering on different location.\
+	 * @param ghostNumber - the ghost which you want to generate (five of them).
+	 * @return ghost - the specified ghost prduced.
+	 */
 	@Override
 	public Ghost produce(int ghostNumber) {
 		// TODO Auto-generated method stub

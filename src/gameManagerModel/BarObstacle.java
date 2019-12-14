@@ -5,14 +5,19 @@ package gameManagerModel;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * The class BarObstacle extends the class Rectangle.
+ * @author alex
+ *
+ */
 public class BarObstacle extends Rectangle {
 
     public static double THICKNESS = 25;
    
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor for the BarObsracle. Build corresponding 'walls' on the maze with fixed thickness.
+     * @param x - the top left location for x axis.
+     * @param y - the top left location for y axis.
      * @param orientation - horizontal or vertical
      * @param length - the length of the bar (1 == 100px)
      * @param color - the color of the wall

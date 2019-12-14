@@ -8,19 +8,30 @@ import javafx.scene.paint.Color;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The class contains the logical structure of maze and basic functions for detecting walls.
+ */
 public class Maze {
 
+	/**
+	 * The walls are stored in a Set.
+	 * @see BarObstacle
+	 */
     public Set<BarObstacle> obstacles;
-
+    
+    /**
+     * Instantiate HashSet to hold all obastacles in the maze.
+     */
     public Maze() {
         obstacles = new HashSet<>();
     }
 
     /**
      * Checks if point is touching obstacles
-     * @param x
-     * @param y
-     * @return
+     * @param x - location on the X axis.
+     * @param y - location on the Y axis.
+     * @param padding - the padding between ghost and the wall.
+     * @return True if point touched the obstacles, False vice versa.s
      */
     public Boolean isTouching(double x, double y, double padding) {
         for (BarObstacle barObstacle:obstacles) {
@@ -38,11 +49,11 @@ public class Maze {
 
     /**
      * lets you know if there's an obstacle in the current coordinate
-     * @param fromX
-     * @param toX
-     * @param fromY
-     * @param toY
-     * @return
+     * @param fromX - start point on X axis.
+     * @param toX - end point on Y axis.
+     * @param fromY - start point on X axis.
+     * @param toY - end point on Y axis.
+     * @return True is obstacle exists on current coordinate, False vice versa.
      */
     public Boolean hasObstacle(double fromX,  double toX, double fromY, double toY) {
         boolean isTouching = false;
@@ -56,8 +67,9 @@ public class Maze {
 
     /**
      * Draws the maze
-     * @param root
-     * @param color
+     * @param root - the stage root.
+     * @param color - the color set for the walls.
+     * @see Color
      */
     public void CreateMaze(Group root, Color color) {
         //~~~~~~~~~~~~~~~~~~~~~~~~~ frame ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

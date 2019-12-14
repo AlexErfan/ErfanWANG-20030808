@@ -17,7 +17,12 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
-/*
+/**
+ * The class GameView contains the view of the maze.
+ * <p>
+ * Draw the view of the maze, and generate ghost as well.
+ * <p>
+ * Initialize the lifes and scores in the game.
  * 
  */
 public class GameView {
@@ -28,11 +33,16 @@ public class GameView {
 	 public static Score scoreBoard;	    
 	 public static Color color;
 	 public static GameManager gameManager;
-	 public static Cookie cherry;
-	 public static String difficulty;
+	 public static Cookie cherry; // the cookie which can increase the life of the pacman.
+	 public static String difficulty; // the game level (low, medium, high)
+	 
 	 /**
-	  * Constructor
-	  */
+	  * Constructor for GameView, instantiate maze, cookeiSet and ghosts.
+	  * <p>
+	  * Get pacman as well.
+	  * @param gameManager - the instance of GameManager.
+	  * @see GameManager
+	  */ 
 	 public GameView(GameManager gameManager) {
 		 GameView.maze = new Maze();
 		 GameView.pacman = Pacman.getInstance();
@@ -44,9 +54,11 @@ public class GameView {
 	
 	/**
      * Draws the board of the game with the cookies and the Pacman
-     * @param color - color of the wall.
+     * @param wColor - color of the wall.
+     * @param difficulty - difficult level of the game.
      */
     public void drawBoard(Color wColor, String difficulty) {
+    	// if the color is not chosen, then use the default one.
     	if (wColor == null)
     		GameView.color = Color.CADETBLUE;
     	else
@@ -175,7 +187,8 @@ public class GameView {
     }
 
     /**
-     * Generates the ghosts for the pacman!
+     * Generates the ghosts for the pacman! Adjust the number of the ghosts according to the difficulty level.
+     * @param difficulty - the difficulty for the game.
      */
     public void generateGhosts(String difficulty) {
     	GhostFactory factory = new GhostFactory();

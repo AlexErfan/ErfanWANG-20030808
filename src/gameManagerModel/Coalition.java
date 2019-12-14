@@ -6,11 +6,19 @@ import gameManagerControl.GameManager;
 import gameManagerView.GameView;
 import ghostFactoryPattern.Ghost;
 
+
+/**
+ * The class Coalition provides two methods to check whether the cookies are eaten by pacman
+ * or the ghost catches pacman.
+ * @author alex
+ *
+ */
 public class Coalition {
 	 /**
      * Checks if the GameView.pacman touches cookies.
-     * @param pacman
-     * @param axis
+     * @param pacman - pacman generate from Pacman
+     * @param axis - specifies the direction the pacman is moving on. "x" for horizontal, else vertical.
+     * @param gameManager - the gameManager object.
      */
     public void checkCookieCoalition(Pacman pacman, String axis, GameManager gameManager) {
         double pacmanCenterY = pacman.getCenterY();
@@ -30,8 +38,6 @@ public class Coalition {
 				    double cookieTopEdge = cookieCenterY - cookie.getRadius();
 				    double cookieBottomEdge = cookieCenterY + cookie.getRadius();
 
-//				    System.out.println("cheery location x : " + GameView.cherry.getCenterX() + " y: " + GameView.cherry.getCenterY());
-//				    System.out.println("cheery location x : " + cookieCenterX + " y: " + cookieCenterY);
 				    if (axis.equals("x")) {
 				        // pacman goes right
 				        if ((cookieCenterY >= pacmanTopEdge && cookieCenterY <= pacmanBottomEdge) && (pacmanRightEdge >= cookieLeftEdge && pacmanRightEdge <= cookieRightEdge)) {
@@ -89,7 +95,9 @@ public class Coalition {
     }
 
     /**
-     * Checks if pacman is touching a ghost
+     * Checks if pacman is touching a ghost, if is then call lifeLost() to reduce one life.
+     * @param gameManager - the GameManager instances which contains the function lifeLost().
+     * @see GameManager
      */
     public void checkGhostCoalition(GameManager gameManager) {
         double pacmanCenterY = GameView.pacman.getCenterY();
@@ -105,12 +113,7 @@ public class Coalition {
             double ghostBottomEdge = ghost.getY() + ghost.getHeight();
             if ((pacmanLeftEdge <= ghostRightEdge && pacmanLeftEdge >= ghostLeftEdge) || (pacmanRightEdge >= ghostLeftEdge && pacmanRightEdge <= ghostRightEdge)) {
                 if ((pacmanTopEdge <= ghostBottomEdge && pacmanTopEdge >= ghostTopEdge) || (pacmanBottomEdge >= ghostTopEdge && pacmanBottomEdge <= ghostBottomEdge)) {
-                    try {
-						gameManager.lifeLost();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                    gameManager.lifeLost();
                 }
             }
         }

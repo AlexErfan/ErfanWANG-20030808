@@ -16,15 +16,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import setupPage.setupController;
 
+/**
+ * The start controller which starts the game and load the stage, set up the scenes.
+ * @author alex
+ *
+ */
 public class startController {
 	@FXML private Button start;
-//	@FXML private ColorPicker wallColor, backgroundColor;
-//	@FXML private ChoiceBox<String> level;
 	
-//	ObservableList<String> choices = FXCollections.observableArrayList("Low", "Medium", "High");;
-//	public static Color wColor, bgColor;
-//	public static String difficulty;
-	
+	/**
+	 * Load up the stage, assign event handler to the scenes.
+	 */
 	public void changeSecene() {
 		
 		Stage theStage = new Stage();
@@ -47,6 +49,11 @@ public class startController {
 	    theStage.show();
 	}
 	
+	/**
+	 * Handler goes switch to the setup scene.
+	 * @param event - registered event for the goTosetUp
+	 * @throws IOException - exception is thrown
+	 */
 	public void goToSetup(ActionEvent event) throws IOException {
 		Parent setting = FXMLLoader.load(getClass().getResource("../setupPage/setup.fxml"));
 		Scene setupScene = new Scene(setting);

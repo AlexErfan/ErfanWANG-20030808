@@ -9,10 +9,24 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+/**
+ * The class Pacman used contains it's own location and it's animation.
+ * <p>
+ * Uses the design idea of singleton.
+ * @author alex
+ *
+ */
 public class Pacman extends Circle {
+	/**
+	 * The private static instance of Pacman.
+	 */
 	private static Pacman pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
 	
-	/* Singleton design for the pacman.*/
+	/**
+	 * Constructor for Pacman, generate pacman in maze with specified pacman iamge.
+	 * @param x - the location on X axis.
+	 * @param y - the location on Y axis.
+	 */
     private Pacman(double x, double y) {
         this.setCenterX(x);
         this.setCenterY(y);
@@ -21,6 +35,10 @@ public class Pacman extends Circle {
         this.setFill(new ImagePattern(img));
     }
     
+    /**
+     * Static mehods returns the static pacman instance.
+     * @return pacman - the instantiated Pacman instance.
+     */
     public static Pacman getInstance(){
         return pacman;
      }
@@ -28,8 +46,9 @@ public class Pacman extends Circle {
     
     /**
      * Creates an animation of the movement.
-     * @param direction
-     * @return
+     * @param direction - the direction read from key board (left, right, up, down).
+     * @param gameManager - the gameManager object from GameManager.
+     * @return handle - the animation handler.
      */
     public static AnimationTimer createAnimation(String direction, GameManager gameManager) {
     	Coalition coalition = new Coalition();
