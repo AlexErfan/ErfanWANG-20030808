@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import gameManagerControl.GameManager;
 import gameManagerModel.BarObstacle;
 import gameManagerModel.Cookie;
 import gameManagerModel.Ghost;
@@ -13,7 +14,6 @@ import gameManagerModel.Pacman;
 import gameManagerModel.Score;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import sample.GameManager;
 
 public class GameView {
 	 public static Pacman pacman;
