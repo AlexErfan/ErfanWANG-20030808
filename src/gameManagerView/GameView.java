@@ -27,6 +27,7 @@ public class GameView {
 	 public static Color color;
 	 public static GameManager gameManager;
 	 public static Cookie cherry;
+	 public static String difficulty;
 	 /**
 	  * Constructor
 	  */
@@ -43,11 +44,12 @@ public class GameView {
      * Draws the board of the game with the cookies and the Pacman
      * @param color - color of the wall.
      */
-    public void drawBoard(Color wColor) {
+    public void drawBoard(Color wColor, String difficulty) {
     	if (wColor == null)
     		GameView.color = Color.CADETBLUE;
     	else
     		GameView.color = wColor;
+    	GameView.difficulty = difficulty;
         GameView.maze.CreateMaze(GameManager.root, GameView.color);
         
         // 1st line
@@ -165,7 +167,7 @@ public class GameView {
             }
         }
         GameManager.root.getChildren().add(GameView.pacman);
-        generateGhosts();
+        generateGhosts(difficulty);
         GameManager.root.getChildren().addAll(GameView.ghosts);
         GameView.scoreBoard = new Score(GameManager.root);
     }
@@ -173,11 +175,13 @@ public class GameView {
     /**
      * Generates the ghosts for the pacman!
      */
-    public void generateGhosts() {
+    public void generateGhosts(String difficulty) {
     	GhostFactory factory = new GhostFactory();
         GameView.ghosts.add(factory.getGhost(1));
         GameView.ghosts.add(factory.getGhost(2));
         GameView.ghosts.add(factory.getGhost(3));
         GameView.ghosts.add(factory.getGhost(4));
+        if(difficulty == "Medium" || difficulty == "High")
+        	GameView.ghosts.add(factory.getGhost(5));
     }
 }

@@ -20,6 +20,9 @@ public class GhostFactory {
 			case 4:
 				ghost = generate.produce(4);
 				break;
+			case 5:
+				ghost = generate.produce(5);
+				break;
 		}
 		return ghost;
 	}

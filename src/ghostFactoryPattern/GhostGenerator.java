@@ -23,6 +23,9 @@ public class GhostGenerator implements GhostInterface{
 			case 4:
 				ghost = new Ghost(28.5 * BarObstacle.THICKNESS, 9.5 * BarObstacle.THICKNESS, "ghost4.png", GameView.maze, GameView.gameManager);
 				break;			
+			case 5:
+				ghost = new Ghost(22.5 * BarObstacle.THICKNESS, 9.5 * BarObstacle.THICKNESS, "ghost5.png", GameView.maze, GameView.gameManager);
+				break;
 		}
 		return ghost;
 	}

@@ -30,7 +30,7 @@ public class Coalition {
 				    double cookieTopEdge = cookieCenterY - cookie.getRadius();
 				    double cookieBottomEdge = cookieCenterY + cookie.getRadius();
 
-				    System.out.println("cheery location x : " + GameView.cherry.getCenterX() + " y: " + GameView.cherry.getCenterY());
+//				    System.out.println("cheery location x : " + GameView.cherry.getCenterX() + " y: " + GameView.cherry.getCenterY());
 //				    System.out.println("cheery location x : " + cookieCenterX + " y: " + cookieCenterY);
 				    if (axis.equals("x")) {
 				        // pacman goes right

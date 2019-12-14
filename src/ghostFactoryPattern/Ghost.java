@@ -115,7 +115,11 @@ public class Ghost extends Rectangle implements Runnable{
      * @param padding
      */
     private void moveUntilYouCant(String whereToGo, String whereToChangeTo, double leftEdge, double topEdge, double rightEdge, double bottomEdge, double padding) {
-        double step = 5;
+    	double step = 5;
+    	if (GameView.difficulty == "Medium")
+    		step = 6;
+    	else if (GameView.difficulty == "High")
+    		step = 7;
         switch (whereToGo) {
             case "left":
                 if (!maze.isTouching(leftEdge, topEdge, padding)) {

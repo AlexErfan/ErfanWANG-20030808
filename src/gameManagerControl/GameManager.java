@@ -136,7 +136,7 @@ public class GameManager {
             getRoot().getChildren().clear();
             GameView.cookieSet.clear();
             GameView.ghosts.clear();
-            gameBoard.drawBoard(GameView.color);
+            gameBoard.drawBoard(GameView.color, GameView.difficulty);
             GameView.pacman.setCenterX(2.5 * BarObstacle.THICKNESS);
             GameView.pacman.setCenterY(2.5 * BarObstacle.THICKNESS);
             this.lifes = 3;
