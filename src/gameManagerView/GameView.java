@@ -16,6 +16,7 @@ import ghostFactoryPattern.GhostFactory;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import setupPage.setupController;
 
 /**
  * The class GameView contains the view of the maze.
@@ -71,6 +72,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -81,6 +84,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 4.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -91,6 +96,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 6.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 if(i == 22) {
                 	Image img = new Image(getClass().getResourceAsStream("cherry.jpeg"));
                 	cookie.setFill(new ImagePattern(img));
@@ -106,6 +113,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 8.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -116,6 +125,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 10.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -126,6 +137,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -136,6 +149,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 14.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -146,6 +161,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 16.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -156,6 +173,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 18.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -166,6 +185,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2*i) + 2.5) * BarObstacle.THICKNESS, 20.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }
@@ -176,6 +197,8 @@ public class GameView {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Cookie cookie = new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 22.5 * BarObstacle.THICKNESS);
+                if (setupController.cColor != null)
+                	cookie.setFill(setupController.cColor);
                 GameView.cookieSet.add(cookie);
                 GameManager.root.getChildren().add(cookie);
             }

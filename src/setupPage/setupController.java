@@ -22,14 +22,14 @@ import javafx.stage.Stage;
  */
 public class setupController {
 	@FXML private Button setup, back;
-	@FXML private ColorPicker wallColor, backgroundColor;
+	@FXML private ColorPicker wallColor, backgroundColor, cookieColor;
 	@FXML private ChoiceBox<String> level;
 	
 	/**
 	 * A list which holds the difficulty levels: low, medium and high.
 	 */
 	ObservableList<String> choices = FXCollections.observableArrayList("Low", "Medium", "High");;
-	public static Color wColor, bgColor;
+	public static Color wColor, bgColor, cColor;
 	public static String difficulty;
 	
 	/**
@@ -73,5 +73,14 @@ public class setupController {
 	public void changeBackground(ActionEvent event) {
 		// get the color picker's value for the background.
 		setupController.bgColor = backgroundColor.getValue(); 
+	}
+	
+	/**
+	 * The handle which change color of the cookies.
+	 * @param event - the registered event for the changeCookieColor.
+	 */
+	public void chageCookieColor(ActionEvent event) {
+		// get the color picker's value for the cookie.
+		setupController.cColor = cookieColor.getValue();
 	}
 }
